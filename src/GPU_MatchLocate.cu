@@ -451,7 +451,6 @@ int main (int argc, char **argv){
 			if(max_moveout[j]<moveouts[i+j*ntrace*nlat*nlon*ndep])max_moveout[j]=moveouts[i+j*ntrace*nlat*nlon*ndep];
 		}
 	}
-	printf("%d\n",max_moveout[0]);
 /*------------------------------------------------------------------------------------------------------------------------*/	
 	
 /*--------------------------Size of variables to create on the device (GPU)-----------------------------------------------*/
@@ -561,7 +560,7 @@ int main (int argc, char **argv){
 		gpu_moveout_t = gpu_moveout + template_id * n_stations * n_components * nlat*nlon*ndep;
 		gpu_weights_t = gpu_weights + template_id * n_stations * n_components;
 //3.Check Host memory again
-		pn= (int)(t_data*200/SEGMENTS+1);
+		pn= (int)(t_data*2/SEGMENTS+1);
 		ppp = (2*nlat*nlon*ndep*pn*sizeof(EVENT)+2*nlat*nlon*ndep*segment_size*sizeof(float)+sizeof(long int)*nlat*nlon*ndep)/(1024*1024);
                 struct sysinfo si;
                 sysinfo(&si);
