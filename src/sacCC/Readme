@@ -1,0 +1,7 @@
+Modified from SAC software by Miao Zhang
+
+cross-correlate A with B
+Please reference the Usage
+
+If you meet segment default, please reduce parameter "MAX".
+Please change the SAC LIB direction by yourself.
