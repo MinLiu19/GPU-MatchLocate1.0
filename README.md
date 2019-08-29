@@ -23,13 +23,13 @@ An improved match and locate method
 	Please see user guide
 
 5.Demo:
-	5.1 compile source code
+        5.1 compile source code
 	$cd ./src
 	$make
 	$cd sacCC
 	$make
 
-	5.2 download continuous data (User-specified)
+  	5.2 download continuous data (User-specified)
 	$cd ../../Demo
 	$python data_download.py
 
