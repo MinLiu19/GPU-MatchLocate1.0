@@ -1,5 +1,5 @@
 /*
-	GPU-M&L : GPU-based Match and Locate [The source code of GPU-M&L is mainly modified from M&L (Zhang and Wen, 2015)] 
+	GPU-MatchLocate : GPU-based Match and Locate [The source code of GPU-M&L is mainly modified from M&L (Zhang and Wen, 2015)] 
 	
 	References:
 		1.Zhang, M., and L. Wen (2015), An effective method for small event detection: match and locate (M&L), Geophysical Journal International, 200(3),1523-1537.
@@ -287,17 +287,17 @@ int main (int argc, char **argv){
 	}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------------Useage----------------------------------------------------------*/
+/*-----------------------------------------------------------Usage----------------------------------------------------------*/
 	if(argc < 9 || error == 1) {
-		fprintf(stderr, "Usage: Fast_MatchLocate -R(maxlat/maxlon/maxh) -I(dlat/dlon/dh) -T(template_window/before/after -D(INTD) -N(n_templates) -G(step/delay) -O(0 or 1) INPUT.in\n");
+		fprintf(stderr, "Usage: GPU_MatchLocate -R(maxlat/maxlon/maxh) -I(dlat/dlon/dh) -T(template_window/before/after -D(INTD/Times) -N(n_templates) -G(step/delay) -O(0 or 1) INPUT.in\n");
 		fprintf(stderr, "-R: searching area (e.g., 0.05/0.05/5.0).\n");
 		fprintf(stderr, "-I: searching interval (e.g., 0.01/0.01/1.0).\n");
 		fprintf(stderr, "-T: time length of the reference phase (e.g., 4.0/1.0/3.0).\n");
-		fprintf(stderr, "-D: keep one event within INTD sec (e.g., 6).\n");
+		fprintf(stderr, "-D: keep one event within INTD sec and set threshold of detection (e.g., 6/9).\n");
 		fprintf(stderr, "-N: the number of template.\n");
 		fprintf(stderr, "-G: moveout setting for step and delay (e.g., 1/0.01).\n");
 		fprintf(stderr, "-O: if output the stack ccv(e.g. default 0:no output).\n");
-		fprintf(stderr, "INPUT.in: template and continuous seismograms, horizontal slowness and vertical slowness of the reference phase.\n");
+		fprintf(stderr, "INPUT.in: template and continuous seismograms, horizontal slowness and vertical slowness of the reference phase and weighting factor of each component.\n");
 		return -1;
 	}
 /*---------------------------------------------------------------------------------------------------------------------------*/
@@ -536,7 +536,7 @@ int main (int argc, char **argv){
 			}
 		}
 		cc_sum_d = NULL;
-//1.SCC's length for each template
+//1.SCC's length of each template
 		n_corr_final = (n_samples_data-n_samples_template-max_moveout[template_id])/step;
 		segment_size=n_corr_final/SEGMENTS + 0.5;
 		size_t sizeof_cc_sum = sizeof(float) *segment_size*nlat*nlon*ndep;
@@ -604,7 +604,7 @@ int main (int argc, char **argv){
         	gpuErrchk(cudaDeviceSynchronize());
 
 //
-//6.Loop SEGMENTS to stack traces
+//6.Loop SEGMENTS to stack SCCs
 		for(i=0;i<SEGMENTS;i++){//2018.4.29
 			dim3 BS_sum(BLOCKSIZE);
 			dim3 GS_sum(ceilf(segment_size/ (int)BS_sum.x),nlat*nlon*ndep);
