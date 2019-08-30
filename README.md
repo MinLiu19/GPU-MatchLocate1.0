@@ -1,7 +1,7 @@
 # GPU-MatchLocate1.0
 An improved match and locate method
 
-1.The GPU-M&L package contains following main files:
+1.The GPU-MatchLocate package contains following main files:
 
 	bin: executable file
 	src: source code
