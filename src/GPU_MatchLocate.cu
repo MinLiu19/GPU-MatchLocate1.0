@@ -219,7 +219,7 @@ int main (int argc, char **argv){
 	int step,segment_size;	
 	int n_stations, n_components, n_corr; 
 	int n_templates;
-	float ppp;
+	//float ppp;
 	float *weights;
 	int SEGMENTS;
 //2.Search grid	
@@ -561,7 +561,7 @@ int main (int argc, char **argv){
 		gpu_weights_t = gpu_weights + template_id * n_stations * n_components;
 //3.Check Host memory again
 		pn= (int)(t_data*2/SEGMENTS+1);
-		ppp = (2*nlat*nlon*ndep*pn*sizeof(EVENT)+2*nlat*nlon*ndep*segment_size*sizeof(float)+sizeof(long int)*nlat*nlon*ndep)/(1024*1024);
+		//ppp = (2*nlat*nlon*ndep*pn*sizeof(EVENT)+2*nlat*nlon*ndep*segment_size*sizeof(float)+sizeof(long int)*nlat*nlon*ndep)/(1024*1024);
                 struct sysinfo si;
                 sysinfo(&si);
 		//printf("%d\n",pn*sizeof(EVENT)/(1024*1024));
