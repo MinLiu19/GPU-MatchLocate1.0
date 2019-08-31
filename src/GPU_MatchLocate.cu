@@ -719,7 +719,7 @@ int main (int argc, char **argv){
 	return 0;
 /*---------------------------------------------------------------------------------------------------------------*/
 }
-//calculate the threshold of detection
+//calculate the threshold of detection (this subroutine is mainly modified from Prof. Peng's CPU_WFCC)
 float Threshold_detection(float *cc_sum, int npts){
 	extern float median, MAD;	
 	extern int n_weights,times;
