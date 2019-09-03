@@ -1,5 +1,5 @@
 /*
-	GPU-MatchLocate : GPU-based Match and Locate [The source code of GPU-M&L is mainly modified from M&L (Zhang and Wen, 2015)] 
+	GPU-MatchLocate : GPU-based Match and Locate [The source code of GPU-M&L is mainly modified from Miao Zhang's M&L (Zhang and Wen, 2015)] 
 	
 	References:
 		1.Zhang, M., and L. Wen (2015), An effective method for small event detection: match and locate (M&L), Geophysical Journal International, 200(3),1523-1537.
@@ -8,7 +8,9 @@
 	
 	Usage:
 		see the usage below.
-	Author: Min Liu, China University of Geosciences (Beijing) (liumin@cugb.edu.cn)
+	Author: 
+		Min Liu 1) China University of Geosciences (Beijing) (liumin@cugb.edu.cn)
+			2) Dalhousie University (m.liu@dal.ca)
 	Revision History
 	06/08 2018 M. Liu Initial coding
 	14/08 2019 M. Liu Version 1.0 released
@@ -289,13 +291,13 @@ int main (int argc, char **argv){
 
 /*-----------------------------------------------------------Usage----------------------------------------------------------*/
 	if(argc < 9 || error == 1) {
-		fprintf(stderr, "Usage: GPU_MatchLocate -R(maxlat/maxlon/maxh) -I(dlat/dlon/dh) -T(template_window/before/after -D(INTD/Times) -N(n_templates) -G(step/delay) -O(0 or 1) INPUT.in\n");
+		fprintf(stderr, "Usage: GPU_MatchLocate -R(maxlat/maxlon/maxh) -I(dlat/dlon/dh) -T(template_window/before/after -D(INTD/Times) -N(n_templates) -G(step/delay/segment) -O(0 or 1) INPUT.in\n");
 		fprintf(stderr, "-R: searching area (e.g., 0.05/0.05/5.0).\n");
 		fprintf(stderr, "-I: searching interval (e.g., 0.01/0.01/1.0).\n");
 		fprintf(stderr, "-T: time length of the reference phase (e.g., 4.0/1.0/3.0).\n");
 		fprintf(stderr, "-D: keep one event within INTD sec and set threshold of detection (e.g., 6/9).\n");
 		fprintf(stderr, "-N: the number of template.\n");
-		fprintf(stderr, "-G: moveout setting for step, delay and segment (e.g., 1/0.01/1).\n");
+		fprintf(stderr, "-G: moveout setting for step, delay, segment (e.g., 1/0.01/1).\n");
 		fprintf(stderr, "-O: if output the stack ccv(e.g. default 0:no output).\n");
 		fprintf(stderr, "INPUT.in: template and continuous seismograms, horizontal slowness and vertical slowness of the reference phase and weighting factor of each component.\n");
 		return -1;

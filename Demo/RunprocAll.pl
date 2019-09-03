@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use warnings;
 # Modified by Min Liu 09/2018
+# From Miao Zhang's M&L pacakge
 # Event Format:
 #     Date        evLat.    evLon.   evDep.  Mag. refLat.  refLon. refDep.
 #20120902030045  37.799   139.998    7.8     2.1  37.799   139.998  7.8

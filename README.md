@@ -60,8 +60,9 @@ An improved match and locate method
 	$perl SelectFinal.pl 2019 07 04 Allevents
 
 	5.9 compare waveforms between template and detection
-	$perl PlotEventWaveformJapan.pl DetectedFinal.dat 1
+	$perl PlotEventWaveform.pl DetectedFinal.dat 1
 
 6.Author:
 
-	Min Liu, China University of Geosciences (Beijing), liumin@cugb.edu.cn
+	Min Liu, China University of Geosciences, Beijing (liumin@cugb.edu.cn)
+             also at Dalhousie University (m.liu@dal.ca)

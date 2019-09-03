@@ -2,6 +2,7 @@
 *	Show SAC data point at specified time
 *	Usage:
 *		lsac time sac_files ...
+*		(by Prof. Lupei Zhu)
 ********************************************************/
 
 #include <stdio.h>
