@@ -67,7 +67,7 @@ extern "C" float   *read_sac(const char *, SACHEAD *);
 
 
 //----------------------------------------------------------------------------------------------------
-//Global parameter------------------------------------------------------------------------------------
+//Global parameters------------------------------------------------------------------------------------
 char **traces,**templates,**ref_template;
 double delay, delta;
 double *Dt_Dgc,*Dt_Dh,*tshift,*gstla,*gstlo;
@@ -82,7 +82,7 @@ float median,MAD;
 int event_id;
 int out_style;
 //----------------------------------------------------------------------------------------------------
-//check the fault of GPU card
+//check the fault of the GPU card
 
 inline void gpuAssert(cudaError_t code, const char *file, int line, bool abort=true) {
 
@@ -254,7 +254,7 @@ int main (int argc, char **argv){
         float *cc_sums_stack;
 /*---------------------------------------------------------------------------------------------------------------------*/ 
 
-/*--------------------------------------------Load parameter----------------------------------------------------------------*/
+/*--------------------------------------------Load parameters-----------------------------------------------------------*/
 	for(i=0;!error && i<argc; i++){
 		if(argv[i][0] == '-'){
 			switch(argv[i][1]){
@@ -295,14 +295,14 @@ int main (int argc, char **argv){
 		fprintf(stderr, "-T: time length of the reference phase (e.g., 4.0/1.0/3.0).\n");
 		fprintf(stderr, "-D: keep one event within INTD sec and set threshold of detection (e.g., 6/9).\n");
 		fprintf(stderr, "-N: the number of template.\n");
-		fprintf(stderr, "-G: moveout setting for step and delay (e.g., 1/0.01).\n");
+		fprintf(stderr, "-G: moveout setting for step, delay and segment (e.g., 1/0.01/1).\n");
 		fprintf(stderr, "-O: if output the stack ccv(e.g. default 0:no output).\n");
 		fprintf(stderr, "INPUT.in: template and continuous seismograms, horizontal slowness and vertical slowness of the reference phase and weighting factor of each component.\n");
 		return -1;
 	}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 
-/*-------------------------------------------------------Read the INPUT.IN---------------------------------------------------*/
+/*-------------------------------------------------------Read INPUT.IN---------------------------------------------------*/
 	strcpy(inputfile, argv[1]);
 	if((fp1 = fopen(inputfile, "r")) == NULL) {
 		fprintf(stderr,"Unable to open file [INPUT.in] %s\n", inputfile);
@@ -328,7 +328,7 @@ int main (int argc, char **argv){
 	else n_stations=ntrace/n_components;
 /*---------------------------------------------------------------------------------------------------------------------------*/
 
-/*--------------------------------------------------Memory request from Host-------------------------------------------------*/
+/*--------------------------------------------------Memory request from Host memory-------------------------------------------*/
 	templates = (char **)malloc(sizeof(char*)*ntrace*n_templates);
 	traces = (char **)malloc(sizeof(char*)*ntrace);
 	ref_template = (char **)malloc(sizeof(char*)*n_templates);
@@ -362,7 +362,7 @@ int main (int argc, char **argv){
 	}
 /*----------------------------------------------------------------------------------------------------------------------*/
 
-/*--------------------------------------Arrange the weight for each component-------------------------------------------*/
+/*------------------------------------------Arrange weight for each component-------------------------------------------*/
 	for(i=0; i<ntrace*n_templates; i++){
 		fscanf(fp1, "%s %lf/%lf %f", templates[i], &Dt_Dgc[i],&Dt_Dh[i],&weights[i]);
 	}
@@ -380,7 +380,7 @@ int main (int argc, char **argv){
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 
-/*-----------------------------------------Load template and continues data into host memory------------------------------*/
+/*-----------------------------------------Load templates and continues data into host memory-----------------------------*/
 	//read ref and obj	
 	ref = (float **)calloc(ntrace*n_templates,sizeof(float *));
 	for(i=0; i<ntrace*n_templates; i++)ref[i] = (float *)calloc(n_samples_template,sizeof(float));
