@@ -35,6 +35,7 @@ int main(int argc, char **argv) {
         fprintf(stderr,"no time window for %s\n",argv[i]);
 	continue;
      }
+     energy = 0;
      t = n2-n1+1.;
      for(j=n1;j<n2;j++) {
 	energy +=ar[j]*ar[j];	
