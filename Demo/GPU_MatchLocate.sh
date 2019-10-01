@@ -29,7 +29,7 @@ T="6.0/1/5"
 INPUT="INPUT.in"
 
 #The number of Templates
-N="28"
+N="7"
 
 #The step of searching and delta (step/delta/segments)
 G="1/0.01/1"
