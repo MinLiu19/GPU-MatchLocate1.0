@@ -1,5 +1,9 @@
-# GPU-MatchLocate1.0
-An improved match and locate method
+# GPU-MatchLocate1.0 :GPU-based Match and Locate
+ 1) The GPU-M&L code is mainly modified from Miao Zhang's M&L (Zhang and Wen, 2015)
+				(https://github.com/Dal-mzhang/MatchLocate2)
+ 2) The strategies of GPU-programming are mainly modified from Beaucé et al. [2017]
+				(https://github.com/beridel/fast_matched_filter)
+
 
 1.The GPU-MatchLocate package contains following main files:
 
