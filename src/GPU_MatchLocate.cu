@@ -549,7 +549,6 @@ int main (int argc, char **argv){
 		segment_size=n_corr_final/SEGMENTS + 0.5;
 		size_t sizeof_cc_sum = sizeof(float) *segment_size*nlat*nlon*ndep;
 //2.Check device memory again
-		printf("%d %d\n",(n_samples_data-n_samples_template-max_moveout[template_id])/step,n_corr_final);
 		cudaMemGetInfo(&freeMem, &totalMem);
         	if (sizeof_cc_sum > freeMem) {
             		printf("%zu MB are requested on GPU #0 whereas it has only %zu free MB on device memory. Please increase the SEGMENTS\n", (sizeof_cc_sum/1024)/1024, (freeMem/1024)/1024);
