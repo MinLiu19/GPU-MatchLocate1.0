@@ -21,7 +21,7 @@
 
 	1)Zhang, M., and L. Wen (2015), An effective method for small event detection: match and locate (M&L), Geophysical Journal International, 200(3),1523-1537.
 	2)Beaucé, E., W. B. Frank, and A. Romanenko (2017), Fast matched filter (FMF): An efficient seismic matched‐filter search for both CPU and GPU architectures, Seismological Research Letters, 89(1), 165-172.
-	3)Liu, M. H. Li, M. Zhang, and T. Wang (2019), Graphics Processing Unit-based Match&Locate (GPU-M&L): An improved Match and Locate technique and its application. (submitted)
+	3)Liu, M. H. Li, M. Zhang, and T. Wang (2019), Graphics Processing Unit-based Match&Locate (GPU-M&L): An improved Match and Locate technique and its application, Seismological Research Letters, 91 (2A): 1019–1029.
 
 4.Usage:
 
